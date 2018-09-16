@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('user/upload', 'UserController@upload')->name('user.upload');
 Route::put('user/upload', 'UserController@uploadTasveer')->name('user.uploadTasveer');
+Route::resource('user', 'UserController');
