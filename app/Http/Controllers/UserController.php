@@ -99,12 +99,12 @@ class UserController extends Controller
         $input = $request->all();
 
         if($file = $request->file('path')) {
-            $name = $file->getClientOriginalName();
+            $name = time() . $file->getClientOriginalName();
             $file->move('tasveer/' . $input['user_id'], $name);
             $input['path'] = $name;
         }
 
         Photo::create($input);
-        return redirect()->route('user.upload');
+        return redirect()->route('user.show', $input['user_id']);
     }
 }
