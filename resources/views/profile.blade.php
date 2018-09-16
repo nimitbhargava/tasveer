@@ -11,10 +11,16 @@
         </div>
 
     </div>
-        @foreach($photos as $photo)
+        @forelse($photos as $photo)
             @if($photo->path)
                 <img height="150" src="{{$photo->getPath($photo, $user)}}" alt="">
             @endif
-        @endforeach
+        @empty
+                <p>You don't have any images, would you like to upload? <a href="{{route('user.upload')}}">Upload</a></p>
+        @endforelse
+
+        @if(!$photos->isEmpty())
+            <p class="row justify-content-center"><a href="{{route('user.upload')}}">Add More +</a></p>
+        @endif
 </div>
 @endsection
